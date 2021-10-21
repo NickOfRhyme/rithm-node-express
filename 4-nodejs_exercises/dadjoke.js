@@ -15,9 +15,9 @@ request(
     if (!err && res.statusCode == 200) {
       const jokes = JSON.parse(body).results.map((jokeObj) => jokeObj.joke);
       const jokeNum = Math.floor(Math.random() * jokes.length) + 1;
-      console.log(jokes[jokeNum]);
-      //   const jokeFile = fs.openSync("jokes.txt", fs.);
-      //   fs.writeSync(jokeFile, jokes[jokeNum]);
+      const jokeFile = fs.openSync("jokes.txt", "a");
+      console.log(jokes);
+      fs.writeSync(jokeFile, `${jokes[jokeNum]}\n`);
     }
   }
 );
